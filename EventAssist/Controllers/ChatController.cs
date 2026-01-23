@@ -8,10 +8,10 @@ namespace EventAssist.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize(Policy = "RequireFullToken")]
     public class ChatController(IChatService chatService, IAuthService authService) : ControllerBase
     {
         [HttpGet]
+        [Authorize(Policy = "RequireFullToken", Roles = "User")]
         public IActionResult TryGetChat()
         {
             try
@@ -29,6 +29,7 @@ namespace EventAssist.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "RequireFullToken", Roles = "HelpdeskAgent")]
         public IActionResult GetChats()
         {
             try
@@ -46,6 +47,7 @@ namespace EventAssist.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "RequireFullToken", Roles = "User")]
         public async Task<IActionResult> OpenChatAsync()
         {
             try
@@ -63,6 +65,7 @@ namespace EventAssist.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "RequireFullToken", Roles = "HelpdeskAgent")]
         public async Task<IActionResult> TakeOverChatAsync(int chatId)
         {
             try
@@ -80,6 +83,7 @@ namespace EventAssist.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "RequireFullToken", Roles = "User")]
         public async Task<IActionResult> RequestHumanSupportAsync(int chatId)
         {
             try
@@ -97,6 +101,7 @@ namespace EventAssist.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = "RequireFullToken", Roles = "HelpdeskAgent")]
         public async Task<IActionResult> UpdateCustomerSupportComment(CustomerSupportCommentRequest request)
         {
             try
@@ -114,6 +119,7 @@ namespace EventAssist.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "RequireFullToken", Roles = "HelpdeskAgent")]
         public async Task<IActionResult> CloseChatAsync(int chatId)
         {
             try
