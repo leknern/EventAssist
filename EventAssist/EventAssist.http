@@ -1,0 +1,6 @@
+@EventAssist_HostAddress = http://localhost:5029
+
+GET {{EventAssist_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
