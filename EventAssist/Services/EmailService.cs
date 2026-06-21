@@ -10,8 +10,6 @@ namespace EventAssist.Services
     {
         public async Task SendForgotPasswordAsync(string email, string token)
         {
-            email = "leknern@gmail.com";
-
             string subject = "Jelszó visszaállítása";
             string html = $"<p>Kedves felhasználó!</p>" +
                           $"<p>Kattints a következő linkre a jelszavad visszaállításához:</p>" +
